@@ -9,19 +9,8 @@ package DeepWorking;
  *
  * @author Abdo
  */
-interface IStack<T> {
 
-    public T pop();
-
-    public T top();
-
-    public void push(T item);
-
-    public boolean full();
-
-    public boolean empty();
-}
-
+//IStack Intereface are exist on same folder of this class
 public class StackWithArray<T> implements IStack<T> {
 
     int size;
