@@ -19,6 +19,25 @@ public class PriorityQueue<T extends Comparable<T>> implements IPriorityQueue<T>
         initPriorityQ(defaultCapacity);
     }
 
+    public void buildHeap(T[] arr) {
+        q = arr;
+        size = arr.length;
+        for (int i = (arr.length / 2) - 1; i >= 0; i--) {
+            siftDown(i);
+        }
+    }
+
+    public void heapSortInPlace(T[] arr) {
+        buildHeap(arr);
+        int i=size;
+        while(i>0) {
+            swap(size - 1, 0);
+            size--;
+            siftDown(0);
+            i--;
+        }
+    }
+
     public PriorityQueue(int capacity) {
         q = new Object[capacity];
     }
@@ -32,7 +51,7 @@ public class PriorityQueue<T extends Comparable<T>> implements IPriorityQueue<T>
         if (i == 0) {
             return;
         }
-        int parent = (i%2==0)?(i-2)/2:(i-1)/2;
+        int parent = (i % 2 == 0) ? (i - 2) / 2 : (i - 1) / 2;
         if (((T) q[i]).compareTo(((T) q[parent])) > 0) {
             swap(i, parent);
             siftUp(parent);
@@ -139,7 +158,8 @@ public class PriorityQueue<T extends Comparable<T>> implements IPriorityQueue<T>
         p.insert(4);
         p.insert(0);
         p.remove(5);
-        while(!p.empty())
+        while (!p.empty()) {
             System.out.println(p.extractMax());
+        }
     }
 }
